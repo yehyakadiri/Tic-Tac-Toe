@@ -7,12 +7,12 @@ type CellProps = {
   cells: string[];
   setCells: Dispatch<SetStateAction<string[]>>;
   cell: string;
-  winnigMessage: string;
+  winningMessage: string;
 };
 
-const Cell = ({ id, go, setGo, cells, setCells, cell, winnigMessage }: CellProps) => {
+const Cell = ({ id, go, setGo, cells, setCells, cell, winningMessage }: CellProps) => {
   const handleClick = () => {
-    if (winnigMessage || cells[id]) return;
+    if (winningMessage || cells[id]) return;
 
     const newCells = [...cells];
     newCells[id] = go;
