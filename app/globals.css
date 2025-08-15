@@ -14,9 +14,10 @@ body {
   min-height: 100vh;
   justify-content: center;
   padding: 1rem;
+  width: 100%;
+  box-sizing: border-box;
 }
 
-/* Start Screen */
 .start-screen {
   display: flex;
   flex-direction: column;
@@ -27,6 +28,8 @@ body {
   border-radius: 15px;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
   animation: fadeIn 0.5s ease-in-out;
+  width: 90%;
+  max-width: 400px;
 }
 
 .start-screen input {
@@ -67,31 +70,37 @@ body {
   box-shadow: 0 0 10px #00f2fe, 0 0 20px #00f2fe;
 }
 
-/* Scoreboard */
+
 .scoreboard {
   display: flex;
   justify-content: space-between;
-  width: 30rem;
+  width: 90%;
+  max-width: 400px;
   margin-bottom: 1rem;
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   font-weight: bold;
 }
 
 .player {
   background: rgba(255, 255, 255, 0.15);
-  padding: 0.6rem 1rem;
+  padding: 0.5rem 1rem;
   border-radius: 10px;
   backdrop-filter: blur(5px);
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
   text-align: center;
+  flex: 1;
+  margin: 0 0.25rem;
 }
 
-/* Game Board */
+
 .gameboard {
-  display: flex;
-  flex-wrap: wrap;
-  width: 30rem;
-  height: 30rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 0.5rem;
+  width: 90%;
+  max-width: 400px;
+  aspect-ratio: 1 / 1;
   border-radius: 15px;
   overflow: hidden;
   background: rgba(255, 255, 255, 0.05);
@@ -101,15 +110,14 @@ body {
 }
 
 .square {
-  width: 10rem;
-  height: 10rem;
-  box-sizing: border-box;
-  border: solid 1px rgba(255, 255, 255, 0.2);
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 8px;
   transition: background 0.2s ease-in-out, transform 0.1s ease-in-out, box-shadow 0.3s;
+  font-size: calc(5vw + 1rem);  
 }
 
 .square:hover {
@@ -121,23 +129,19 @@ body {
   transform: scale(0.95);
 }
 
-.cross, .circle {
-  font-size: 5rem;
-  font-weight: bold;
-  animation: fadeIn 0.3s ease-in-out;
-}
-
 .cross {
   color: #ff4b5c;
   text-shadow: 0 0 8px rgba(255, 75, 92, 0.6);
+  animation: fadeIn 0.3s ease-in-out;
 }
 
 .circle {
   color: #00f2fe;
   text-shadow: 0 0 8px rgba(0, 242, 254, 0.6);
+  animation: fadeIn 0.3s ease-in-out;
 }
 
-/* Winner Message */
+
 .winner-message {
   font-size: 1.5rem;
   margin-top: 1rem;
@@ -146,7 +150,7 @@ body {
   animation: pulse 1.2s infinite alternate;
 }
 
-/* Buttons */
+
 button {
   padding: 0.6rem 1.2rem;
   background: linear-gradient(135deg, #ff512f, #dd2476);
@@ -167,7 +171,7 @@ button:hover {
   box-shadow: 0 0 10px #ff4b5c, 0 0 20px #ff4b5c;
 }
 
-/* Animations */
+
 @keyframes fadeIn {
   from { opacity: 0; transform: scale(0.9); }
   to { opacity: 1; transform: scale(1); }
@@ -182,4 +186,24 @@ button:hover {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
+}
+
+@media (max-width: 500px) {
+  .scoreboard {
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 80%;
+  }
+
+  .player {
+    margin: 0;
+  }
+
+  .gameboard {
+    gap: 0.25rem;
+  }
+
+  .square {
+    font-size: calc(12vw);
+  }
 }
