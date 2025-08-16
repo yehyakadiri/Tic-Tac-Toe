@@ -13,6 +13,7 @@ type CellProps = {
 const Cell = ({ id, go, setGo, cells, setCells, cell, winningMessage }: CellProps) => {
   const handleClick = () => {
     if (winningMessage || cells[id]) return;
+    if (go === "cross" && cells.includes("Computer")) return; // prevent manual move for AI
 
     const newCells = [...cells];
     newCells[id] = go;
