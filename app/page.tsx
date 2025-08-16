@@ -57,7 +57,7 @@ export default function Home() {
         const newCells = [...cells];
 
         // 1. Check if AI can win
-        for (let combo of winningCombos) {
+        for (const combo of winningCombos) {
           const [a, b, c] = combo;
           const values = [newCells[a], newCells[b], newCells[c]];
           if (values.filter((v) => v === "cross").length === 2 && values.includes("")) {
@@ -70,7 +70,7 @@ export default function Home() {
         }
 
         // 2. Block player from winning
-        for (let combo of winningCombos) {
+        for (const combo of winningCombos) {
           const [a, b, c] = combo;
           const values = [newCells[a], newCells[b], newCells[c]];
           if (values.filter((v) => v === "circle").length === 2 && values.includes("")) {
